@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Sketch Book</title>
+
+    <link rel="icon" type="image/svg+xml" href="https://static.thenounproject.com/png/5324573-200.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen w-screen overflow-hidden m-0 p-0 box-border">
+    <div
+        class="flipbook w-[1000px] h-[600px] lg:w-[800px] lg:h-[500px] md:w-[600px] md:h-[400px] sm:w-[320px] sm:h-[200px]">
+
+        <div class="hard bg-cover bg-no-repeat bg-center text-white z-50"
+            style="background-image: url('./images/death-note-original-imag3afgbd2qevyw.webp')"></div>
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./turn.js"></script>
+    <script>
+        const array = [
+            { text: 'Death Note', img: 'dt73i1-a591fcf0-755b-47cf-b84a-2df3a049e10e.png' },
+            { text: 'Death Note', img: 'Black_Edition_1.webp' },
+            { text: 'Dragon ball Son Goku', img: 'png-clipart-goku-super-saiyan-sketch-drawing-goku-manga-monochrome.png' },
+            { text: 'Dragon ball Son Goku', img: '8344b1810b2419ccacab049210965695.jpg' },
+            { text: 'Hunter x Hunter', img: 'characters-in-anime-hunter-x-hunter-coloring.jpg' },
+            { text: 'Hunter x Hunter Hisoka', img: '18.jpg' },
+            { text: 'Demon slayer Tanjiro', img: '01bc1cdcbacb44eeab7e37a29d8bee42.jpg' },
+            { text: 'Demon slayer Nezeko', img: 'images.jpg' },
+            { text: 'tokyo Ghoul', img: '545909.jpg' },
+            { text: 'Naruto', img: 'png-transparent-naruto-uzumaki-illustration-line-art-drawing-sasuke-uchiha-naruto-lineart-angle-white-face.png' },
+            { text: 'One piece', img: '453258d8fc1c2546e4d654323ae7a585.jpg' },
+            { text: 'One piece Luffy', img: '550daded5f0c8b42fafdc638869bc2d7.jpg' },
+            { text: 'Attack on titens', img: 'png-clipart-white-and-black-wings-a-o-t-wings-of-freedom-attack-on-titan-eren-yeager-logo-anime-wings-angle-leaf-thumbnail.png' },
+            { text: 'Black clover Asta', img: '539c37c67b62ee063efc78f9f9cb1d01.jpg' },
+            { text: 'Bleach', img: '189c9ba38ea5144b9be3ab64e698a39d.jpg' },
+            { text: 'Jujustu kaisen Nanami yuji', img: 'ff12235ced99a4f780f97dd3643dc601.jpg' },
+            { text: 'Jujustu kaisen Gojo', img: 'jujutsu-kaisen-sukuna-anime-drawing-yqq9tobfv7gygtxe.jpg' },
+            { text: 'Jujustu kaisen sukuna', img: '9329536d4fda09925ccd11e28b9ca806.jpg' },
+        ];
+
+        $(document).ready(function () {
+            $('.flipbook').turn();
+
+            array.forEach((arr, index) => {
+                const data = `
+                <div class="flex flex-col justify-center items-center gap-2.5 bg-white border border-black/10">
+                    <img src="./images/${arr.img}" alt="${arr.text}" class="w-[70%] object-cover mx-auto sm:w-[90%]" />
+                    <small class="text-sm mb-2.5">${arr.text}</small>
+                </div>
+                `;
+                $('.flipbook').turn('addPage', $(data));
+
+                if (index === array.length - 1) {
+
+                    const backCover = `
+                    <div class="hard bg-cover bg-no-repeat bg-center text-white z-50"
+                        style="background-image: url('./images/41+TRi3flmS._AC_UF1000,1000_QL80_.jpg')"></div>
+                    `;
+                    $('.flipbook').turn('addPage', $(backCover));
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
